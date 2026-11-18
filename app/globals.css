@@ -1,0 +1,180 @@
+@import "tailwindcss";
+
+/* ───────── Design tokens ───────── */
+:root {
+  color-scheme: dark;
+  --bg: #070a12;
+  --fg: #eaf0ff;
+  --card: #0f1523;
+  --accent: #8aa4ff;
+  --accent2: #4fe3c1;
+  --accent3: #a78bfa;
+  --glow: #5b7cff;
+  --warn: #fbbf24;
+
+  --line: color-mix(in srgb, #fff 10%, transparent);
+  --card-bg: linear-gradient(180deg, color-mix(in srgb, #fff 6%, transparent), color-mix(in srgb, #fff 2.5%, transparent));
+  --card-shadow: inset 0 1px 0 color-mix(in srgb, #fff 7%, transparent), 0 20px 50px -25px #000;
+  --chip-bg: color-mix(in srgb, #fff 6%, transparent);
+  --btn-from: #5468f5;
+  --btn-to: #8b5cf6;
+  --btn-shadow: 0 10px 30px -8px color-mix(in srgb, #8b5cf6 70%, transparent);
+
+  --aur1: color-mix(in srgb, #5b7cff 26%, transparent);
+  --aur2: color-mix(in srgb, #9b5cf6 18%, transparent);
+  --aur3: color-mix(in srgb, #14b8a6 12%, transparent);
+  --grid-a: 4%;
+
+  --plate-a: 16;
+  --plate-border: 62;
+  --plate-shadow: #00000070;
+  --l-data: #4fe3c1;
+  --l-api: #b49bff;
+  --l-mobile: #6aa7ff;
+  --l-web: #a5c8ff;
+
+  --m-win: #0e1422;
+  --m-bar: #131b2c;
+  --m-chip: #141c2e;
+  --m-phone: #0c111c;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f7f8fc;
+  --fg: #0b1020;
+  --card: #ffffff;
+  --accent: #4338ca;
+  --accent2: #0f9b8e;
+  --accent3: #7c3aed;
+  --glow: #7c8cff;
+  --warn: #b45309;
+
+  --line: color-mix(in srgb, #0b1020 10%, transparent);
+  --card-bg: #ffffff;
+  --card-shadow: 0 1px 2px #0b102010, 0 12px 40px -12px #3b3fa826;
+  --chip-bg: #f1f2fa;
+  --btn-from: #4338ca;
+  --btn-to: #7c3aed;
+  --btn-shadow: 0 12px 28px -10px color-mix(in srgb, #4338ca 80%, transparent);
+
+  --aur1: color-mix(in srgb, #818cf8 38%, transparent);
+  --aur2: color-mix(in srgb, #f0abfc 34%, transparent);
+  --aur3: color-mix(in srgb, #5eead4 30%, transparent);
+  --grid-a: 5%;
+
+  --plate-a: 34;
+  --plate-border: 70;
+  --plate-shadow: #4338ca30;
+  --l-data: #0f9b8e;
+  --l-api: #7c3aed;
+  --l-mobile: #3b5bdb;
+  --l-web: #4f7cf0;
+
+  --m-win: #ffffff;
+  --m-bar: #eef0f8;
+  --m-chip: #ffffff;
+  --m-phone: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --color-white: var(--fg);
+  --font-sans: var(--font-space), system-ui, sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--bg);
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--fg) 22%, transparent);
+  border-radius: 8px;
+}
+
+/* ───────── Reusable surfaces ───────── */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  box-shadow: var(--card-shadow);
+  border-radius: 1.1rem;
+}
+.chip {
+  background: var(--chip-bg);
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--btn-from), var(--btn-to));
+  color: #fff;
+  box-shadow: var(--btn-shadow);
+}
+.btn-primary:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+.text-grad {
+  background: linear-gradient(90deg, var(--accent), var(--accent3) 55%, var(--accent2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Page backdrop: aurora glow + faint grid */
+.bg-grid {
+  background-image:
+    radial-gradient(900px 600px at 85% -5%, var(--aur1), transparent 65%),
+    radial-gradient(700px 500px at 5% 15%, var(--aur2), transparent 65%),
+    radial-gradient(800px 600px at 95% 55%, var(--aur3), transparent 65%),
+    linear-gradient(color-mix(in srgb, var(--fg) var(--grid-a), transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--fg) var(--grid-a), transparent) 1px, transparent 1px);
+  background-size: auto, auto, auto, 56px 56px, 56px 56px;
+  -webkit-mask-image: linear-gradient(#000 55%, transparent 100%);
+  mask-image: linear-gradient(#000 55%, transparent 100%);
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee {
+  animation: marquee 45s linear infinite;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .marquee {
+    animation: none;
+  }
+}
