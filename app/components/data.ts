@@ -4,21 +4,21 @@ export const profile = {
   email: "muddasiramjad6@gmail.com",
   phones: ["+923042525475", "+923154043456"],
   summary:
-    "Senior Software Engineer with 6+ years of experience building web and mobile applications with React.js, Vue.js, React Native and Node.js. Delivered enterprise analytics dashboards, AI-powered platforms, SaaS products and social applications for teams and clients in the USA and Saudi Arabia. Leads a team of 3–5 developers while staying hands-on in architecture, code and delivery.",
+    "Senior Software Engineer with 6+ years of experience building web and mobile applications with React.js, Vue.js, React Native and Node.js. Delivered enterprise analytics dashboards, AI-powered platforms, SaaS products and social applications for international teams and clients. Leads engineering teams while staying hands-on in architecture, code and delivery.",
   roles: [
     "React & Next.js Architect",
     "React Native Developer",
     "Node.js Backend Engineer",
-    "Team Lead · 3–5 Developers",
+    "Team Lead",
     "AI-Assisted Builder",
   ],
 };
 
 export const stats = [
   { value: 6, suffix: "+", label: "Years building" },
-  { value: 4, suffix: "", label: "Companies shipped for" },
-  { value: 5, suffix: "", label: "Max team size led (3–5)" },
-  { value: 2, suffix: "", label: "Continents served" },
+  { value: 4, suffix: "", label: "Companies worked with" },
+  { value: 4, suffix: "", label: "Featured products shipped" },
+  { value: 3, suffix: "", label: "Platforms: web, mobile, backend" },
 ];
 
 export const skillGroups = [
@@ -48,11 +48,11 @@ export const jobs: Job[] = [
     period: "Mar 2020 – Present",
     accent: "#7c5cff",
     points: [
-      "Lead a team of 3–5 developers, guiding technical decisions and code quality while contributing hands-on to delivery.",
+      "Lead a team of developers, guiding technical decisions and code quality while contributing hands-on to delivery.",
       "Design and build web and mobile features with React.js, Vue.js and React Native for enterprise applications, SaaS platforms, CRM systems, analytics dashboards and admin tools.",
       "Develop backend services and REST APIs with Node.js, Express.js and MongoDB, integrated across frontend and mobile clients.",
       "Shape application architecture and solve cross-stack technical problems from design through release.",
-      "Work directly with international clients and distributed teams in the USA and Saudi Arabia.",
+      "Work directly with international clients and distributed teams across time zones.",
       "Use AI-assisted tools (Claude, GitHub Copilot, Cursor) to speed up development, debugging and code reviews — every change reviewed before it ships.",
     ],
     tech: ["React.js", "Vue.js", "React Native", "Node.js", "Express.js", "MongoDB", "REST APIs"],
@@ -97,6 +97,18 @@ export const jobs: Job[] = [
 
 export const projects = [
   {
+    title: "Enterprise Analytics & Command Center",
+    tag: "Aviso AI · Analytics",
+    color: ["#4338ca", "#0e7490"],
+    points: [
+      "Interactive dashboards with KPI visualizations and executive insights.",
+      "Command Center with priority notifications and deep-dive analytics.",
+      "Configuration-driven UI so each tenant gets its own features and customization.",
+      "Demo Intelligence modules: Demo Rooms, Accounts, Content Library and Seller Analytics.",
+    ],
+    stack: ["Dashboards", "Multi-tenant UI", "Analytics APIs"],
+  },
+  {
     title: "AI-Powered RFP Management Platform",
     tag: "AI · SaaS",
     color: ["#7c5cff", "#00e5ff"],
@@ -137,3 +149,51 @@ export const education = {
   school: "The Islamia University of Bahawalpur, Pakistan",
   period: "Jan 2017 – Jan 2019",
 };
+
+export const companies = ["Aviso AI", "SearchAtlas", "Enigmatix", "Ilsa Interactive"];
+
+export const capabilities = [
+  {
+    icon: "web",
+    title: "Web applications",
+    text: "Enterprise apps, SaaS platforms, CRM systems and admin tools built to scale.",
+    tags: ["React.js", "Next.js", "Vue.js", "TypeScript"],
+  },
+  {
+    icon: "mobile",
+    title: "Mobile apps",
+    text: "Cross-platform iOS and Android apps with REST API integration.",
+    tags: ["React Native", "REST APIs"],
+  },
+  {
+    icon: "server",
+    title: "Backend & APIs",
+    text: "Services and APIs that connect frontend and mobile clients end to end.",
+    tags: ["Node.js", "Express.js", "NestJS", "MongoDB", "SQL"],
+  },
+  {
+    icon: "chart",
+    title: "Analytics dashboards",
+    text: "KPI visualizations and executive insights for enterprise teams.",
+    tags: ["Dashboards", "Config-driven UI"],
+  },
+  {
+    icon: "spark",
+    title: "AI-powered products",
+    text: "Questionnaire automation, personalized recommendations and AI-assisted workflows.",
+    tags: ["AI features", "RBAC", "Approval flows"],
+  },
+  {
+    icon: "users",
+    title: "Technical leadership",
+    text: "Lead engineering teams: technical decisions, code quality and delivery.",
+    tags: ["Architecture", "Code review", "Mentoring"],
+  },
+];
+
+export const principles = [
+  { title: "Architecture first", text: "Shaping application architecture and solving cross-stack problems, from design through release." },
+  { title: "AI-assisted, human-reviewed", text: "Claude, GitHub Copilot and Cursor speed up delivery — every change is reviewed before it ships." },
+  { title: "Close collaboration", text: "Working directly with international clients and distributed teams across time zones." },
+  { title: "Reusable and fast", text: "Reusable components and optimized complex UI workflows keep frontends maintainable and performant." },
+];

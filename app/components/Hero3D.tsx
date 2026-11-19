@@ -29,7 +29,7 @@ export default function Hero3D() {
   };
   return (
     <div
-      className="relative mx-auto h-[330px] w-full max-w-[560px] select-none sm:h-[560px]"
+      className="relative mx-auto h-[280px] w-full max-w-[560px] select-none sm:h-[560px] lg:scale-[1.1]"
       style={{ perspective: 1800 }}
       onMouseMove={onMove}
       onMouseLeave={() => (mx.set(0), my.set(0), setHover(null))}

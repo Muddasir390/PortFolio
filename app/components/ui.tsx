@@ -3,14 +3,14 @@
 import { motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useEffect, useRef, useState, type MouseEvent, type ReactNode } from "react";
 
-export function Reveal({ children, delay = 0, y = 28, className = "" }: { children: ReactNode; delay?: number; y?: number; className?: string }) {
+export function Reveal({ children, delay = 0, y = 24, className = "" }: { children: ReactNode; delay?: number; y?: number; className?: string }) {
   return (
     <motion.div
       className={className}
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
     </motion.div>
@@ -18,7 +18,7 @@ export function Reveal({ children, delay = 0, y = 28, className = "" }: { childr
 }
 
 /** Mouse-driven 3D tilt. Children can use translateZ() to float above the surface. */
-export function Tilt({ children, max = 10, className = "" }: { children: ReactNode; max?: number; className?: string }) {
+export function Tilt({ children, max = 8, className = "" }: { children: ReactNode; max?: number; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const px = useMotionValue(0.5);
   const py = useMotionValue(0.5);
@@ -50,7 +50,7 @@ export function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
     const start = performance.now();
     let raf = 0;
     const tick = (now: number) => {
-      const k = Math.min(1, (now - start) / 1400);
+      const k = Math.min(1, (now - start) / 1200);
       setN(Math.round((1 - Math.pow(1 - k, 4)) * to));
       if (k < 1) raf = requestAnimationFrame(tick);
     };
@@ -67,26 +67,18 @@ export function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
 
 export function Button({ children, href, primary = false }: { children: ReactNode; href: string; primary?: boolean }) {
   return (
-    <a
-      href={href}
-      className={`inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold transition ${
-        primary ? "btn-primary" : "chip !rounded-xl text-white hover:border-[var(--accent)]/60 hover:text-[var(--accent)]"
-      }`}
-    >
+    <a href={href} className={`btn ${primary ? "btn-primary" : "btn-outline"}`}>
       {children}
     </a>
   );
 }
 
-export function SectionTitle({ n, eyebrow, title }: { n: string; eyebrow: string; title: string }) {
+export function SectionTitle({ eyebrow, title, sub, className = "" }: { eyebrow: string; title: string; sub?: string; className?: string }) {
   return (
-    <Reveal className="mb-14">
-      <p className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)]">
-        <span>{n}</span>
-        <span className="h-px w-10 bg-gradient-to-r from-[var(--accent)] to-transparent" />
-        <span>{eyebrow}</span>
-      </p>
-      <h2 className="mt-4 text-3xl font-semibold tracking-tight md:text-5xl">{title}</h2>
+    <Reveal className={`mb-12 ${className}`}>
+      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">{eyebrow}</p>
+      <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-[2.5rem] md:leading-[1.1]">{title}</h2>
+      {sub && <p className="mt-4 max-w-2xl text-base leading-relaxed text-[var(--muted)] md:text-lg">{sub}</p>}
     </Reveal>
   );
 }

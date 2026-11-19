@@ -232,3 +232,78 @@ export function FitnessMock() {
     </div>
   );
 }
+
+/* ───────── Enterprise analytics: Command Center ───────── */
+export function AnalyticsMock() {
+  const kpis = [
+    ["Engagement", "84%", "+6%"],
+    ["Active accounts", "1,248", "+32"],
+    ["Demo rooms", "57", "+9"],
+  ];
+  const bars = [38, 52, 44, 68, 59, 81, 73, 92];
+  return (
+    <div className="relative pb-6 pt-4" style={{ transformStyle: "preserve-3d" }}>
+      <div className="overflow-hidden rounded-xl border border-white/10 bg-[var(--m-win)] shadow-2xl shadow-black/30">
+        <div className="flex items-center gap-2 border-b border-white/10 bg-[var(--m-bar)] px-4 py-2.5">
+          <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
+          <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
+          <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
+          <span className="ml-3 truncate rounded-md bg-white/5 px-3 py-0.5 font-mono text-[10px] text-white/45">app / command-center</span>
+        </div>
+        <div className="p-4 sm:p-5">
+          <div className="flex items-center justify-between">
+            <div className="text-sm font-semibold">Command Center</div>
+            <div className="flex gap-1.5 text-[10px]">
+              {["Overview", "Accounts", "Rooms"].map((t, i) => (
+                <span key={t} className={`rounded-md px-2 py-1 ${i === 0 ? "bg-[var(--accent)]/15 text-[var(--accent)]" : "text-white/45"}`}>
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div className="mt-4 grid grid-cols-3 gap-2.5">
+            {kpis.map(([l, v, d]) => (
+              <div key={l} className="rounded-lg border border-white/10 bg-white/[0.03] p-2.5">
+                <div className="truncate text-[10px] text-white/50">{l}</div>
+                <div className="mt-1 text-base font-semibold">{v}</div>
+                <div className="text-[10px]" style={{ color: GOOD }}>
+                  {d}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-3 rounded-lg border border-white/10 bg-white/[0.03] p-3">
+            <div className="text-[10px] text-white/50">Seller analytics · last 8 weeks</div>
+            <div className="mt-2 flex h-20 items-end gap-1.5">
+              {bars.map((h, i) => (
+                <div key={i} className="flex-1 rounded-t" style={{ height: `${h}%`, background: i === bars.length - 1 ? ACCENT : mix(ACCENT, 35) }} />
+              ))}
+            </div>
+          </div>
+          <div className="mt-3 space-y-2">
+            {[
+              ["Priority", "Account review due today", WARN],
+              ["Insight", "Content engagement is trending up", GOOD],
+            ].map(([k, t, c]) => (
+              <div key={t} className="flex items-center gap-2.5 rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-[11px]">
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: c }} />
+                <span className="text-white/50">{k}</span>
+                <span className="truncate text-white/80">{t}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <Chip className="right-3 top-0 sm:right-6" depth={70}>
+        <span className="text-white/50">Tenant · </span>
+        <span className="font-medium">Custom layout</span>
+      </Chip>
+      <Chip className="bottom-0 left-3 sm:left-6" depth={60}>
+        <span className="text-white/50">Priority · </span>
+        <span className="font-medium" style={{ color: WARN }}>
+          3 new
+        </span>
+      </Chip>
+    </div>
+  );
+}
